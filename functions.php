@@ -30,3 +30,8 @@ function generateHTML($html, $vars=[]){
   $html .= '<!-- generated: '.date("l jS \of F Y h:i:s A").' -->';
   return $html;
 }
+
+// expects a destination path and some html and it will create a file
+function saveHTML($path, $html){
+  return file_put_contents($path, $html);
+}
