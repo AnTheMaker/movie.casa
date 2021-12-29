@@ -19,3 +19,14 @@ function copy_dir($src, $dst){
   }
   closedir($dir);
 }
+
+// really, really basic templating engine. input some html and some variables and it will replace them and
+function generateHTML($html, $vars=[]){
+  foreach($vars as $var->$value){
+    $var = strtolower($var);
+    $var = preg_quote($var, '/');
+    $html = preg_replace('/{{\s*'.$var.'\s*}}/', $value, $html);
+  }
+  $html .= '<!-- generated: '.date("l jS \of F Y h:i:s A").' -->';
+  return $html;
+}
