@@ -1,7 +1,8 @@
 // our js will go here
 
 $(function(){
-  $.getJSON('data.json', function(data){
+  var data = JSON.parse(json_data);
+  if(data.time > 0){
     var html = '';
     var more_movies_html = '';
     var i = 0;
@@ -34,7 +35,7 @@ $(function(){
     html += '<h2 class="special">More movies</h2>';
     html += '<div class="more-movies">'+more_movies_html+'</div>'
     $('#content').html(html);
-  });
+  }
 });
 
 

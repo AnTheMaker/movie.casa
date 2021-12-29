@@ -25,7 +25,6 @@ foreach($movie_data['results'] as $movie){
       'avg' => $movie['vote_average'],
       'count' => $movie['vote_count']
     ],
-    'genres' => (array)$movie['genre_ids'],
     'images' => [
       'backdrop' => $movie['backdrop_path'],
       'poster' => $movie['poster_path']
@@ -35,6 +34,11 @@ foreach($movie_data['results'] as $movie){
 }
 saveFile($output_dir.'/data.json', json_encode($save_data));
 
+$html = file_get_contents($output_dir.'/index.html');
+$data = json_encode($save_data);
+$data = addslashes($data); // escape quotes
+$html = preg_replace('/{{\s*data\s*}}/', $data, $html);
+saveFile($output_dir.'/index.html', $html);
 
 $time_elapsed = round((microtime(true) - $start_time), 6); // execution time in seconds
 echo 'OK - Site built successfully in '.$time_elapsed.'s'.PHP_EOL;
