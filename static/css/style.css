@@ -3,5 +3,41 @@ body footer{
   font-size: small;
 }
 .poster{
-  border-radius: 20px;
+  border-radius: 8px;
+}
+.top-movie .col{
+  padding: 10px;
+}
+.more-movies{
+  display: flex;
+  overflow-x: auto;
+}
+.more-movies .movie-element{
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 10px;
+  width: 100px;
+}
+.more-movies .movie-element .poster{
+  width: 100px;
+}
+
+@media(min-width: 30em){ /* DESKTOP */
+  .row{
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+  }
+  .col{
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+@media(max-width: 30em){ /* MOBILE */
+  .top-movie .col:first-child{
+    text-align: center;
+  }.top-movie .col:first-child .poster{
+    display: block;
+    margin: 0 auto;
+  }
 }
