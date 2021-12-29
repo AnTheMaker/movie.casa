@@ -1,5 +1,11 @@
 <?php
 
+// variabbles
+$tmdb_key = getenv('tmdb_key');
+
+$output_dir = __DIR__.'/dist'; // also change in /netlify.toml
+
+
 // function to recursively copy an entire directory (with all files and sub-directories) from on place to another
 function copy_dir($src, $dst){
   $dir = opendir($src);
@@ -31,7 +37,13 @@ function generateHTML($html, $vars=[]){
   return $html;
 }
 
-// expects a destination path and some html and it will create a file
-function saveHTML($path, $html){
-  return file_put_contents($path, $html);
+// expects a destination path and some content and it will create a file
+function saveFile($path, $content){
+  return file_put_contents($path, $content);
+}
+
+function getPopularMovies($page=1){
+  global $tmdb_key;
+  $data = file_get_contents('https://api.themoviedb.org/3/movie/popular?api_key='.urlencode($tmdb_key).'&page='.urlencode($page));
+  return json_decode($data, true);
 }
