@@ -1,0 +1,14 @@
+name: Trigger Site Rebuild every day
+
+on:
+  schedule:
+    # Runs once a day at midnight
+    - cron: '0 0 * * *'
+jobs:
+  build:
+    name: Trigger Site Rebuild
+    runs-on: ubuntu-latest
+    steps:
+      - name: CURL request
+        # Hit the webhook endpoint of Netlify to trigger a rebuild of the site with new data
+        run: curl -X POST -d {} ${{ secrets.netlify_build_hook }}
