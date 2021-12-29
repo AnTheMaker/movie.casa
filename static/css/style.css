@@ -1,3 +1,24 @@
+:root{
+  --scrollbar-thumb: var(--text-muted);
+}
+
+/* Import font: fraunces-800 - latin (https://github.com/undercasetype/Fraunces) */
+@font-face{
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 800;
+  src: local(''),
+       url('fonts/fraunces-v10-latin-800.woff2') format('woff2'),
+       url('fonts/fraunces-v10-latin-800.woff') format('woff');
+}
+
+.logo{
+  font-weight: 800;
+  font-family: 'Fraunces', serif;
+  font-size: 3.5em;
+  margin: 10px 0;
+  padding: 0 0 10px 0;
+}
 footer{
   font-size: small;
 }
@@ -26,11 +47,17 @@ footer .links{
 .more-movies .movie-element{
   display: inline-block;
   flex-shrink: 0;
-  padding: 10px 10px 10px 0;
+  padding: 10px 10px 0 0;
   width: 120px;
+}
+.more-movies .movie-element p{
+  font-size: 0.9em;
+  text-align: center;
 }
 .more-movies .movie-element .poster{
   width: 100px;
+  display: block;
+  margin: 0 auto;
 }
 
 .loader{
@@ -67,6 +94,11 @@ footer .links{
   }.top-movie .col:first-child .poster{
     display: block;
     margin: 0 auto;
+  }
+  .logo{
+    text-align: center;
+    font-size: 3em;
+    border-bottom: 2px solid white;
   }
   footer .credits,
   footer .links{
