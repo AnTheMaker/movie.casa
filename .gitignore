@@ -1,5 +1,3 @@
 .nev
 dist/
 !dist/.gitkeep
-!dist/index.html
-!dist/test.html

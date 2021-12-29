@@ -1,6 +1,16 @@
-body footer{
-  text-align: right;
+footer{
   font-size: small;
+}
+footer .credits,
+footer .links{
+  display: inline-block;
+}
+footer .credits img{
+  max-width: 100px;
+  vertical-align: middle;
+}
+footer .links{
+  float: right;
 }
 .poster{
   border-radius: 8px;
@@ -39,5 +49,15 @@ body footer{
   }.top-movie .col:first-child .poster{
     display: block;
     margin: 0 auto;
+  }
+  footer .credits,
+  footer .links{
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  footer .credits img{
+    margin: 0 5px;
   }
 }
