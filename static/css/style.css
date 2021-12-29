@@ -1,5 +1,6 @@
 :root{
   --scrollbar-thumb: var(--text-muted);
+  --special: #7af0ff;
 }
 
 /* Import font: fraunces-800 - latin (https://github.com/undercasetype/Fraunces) */
@@ -12,12 +13,28 @@
        url('fonts/fraunces-v10-latin-800.woff') format('woff');
 }
 
-.logo{
+.logo,
+.special{
   font-weight: 800;
   font-family: 'Fraunces', serif;
+}
+.logo{
   font-size: 3.5em;
   margin: 10px 0;
   padding: 0 0 10px 0;
+}
+.special{
+  color: var(--special);
+}
+.special svg{
+  display: inline-block;
+  margin: 0 3px 0 0;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -2px;
+}
+.special svg path{
+  fill: var(--special);
 }
 footer{
   font-size: small;
