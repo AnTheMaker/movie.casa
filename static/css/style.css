@@ -112,6 +112,9 @@ footer .links{
     font-size: 3em;
     border-bottom: 2px solid white;
   }
+  button.watch{
+    width: 100%;
+  }
   footer .credits,
   footer .links{
     width: 100%;
