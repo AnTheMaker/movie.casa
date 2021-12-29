@@ -22,7 +22,7 @@ $(function(){
           html += '</div>';
         html += '</div>';
       }else{
-        var poster = 'https://images.weserv.nl/?url='+encodeURIComponent('https://image.tmdb.org/t/p/w185/'+movie.images.poster);
+        var poster = 'https://images.weserv.nl/?url='+encodeURIComponent('https://image.tmdb.org/t/p/w154/'+movie.images.poster);
         more_movies_html += '<div class="movie-element">';
           more_movies_html += '<img class="poster" src="'+poster+'" alt="Poster of '+title+'" loading="lazy">';
           more_movies_html += '<p>'+title+'</p>';
@@ -31,7 +31,7 @@ $(function(){
     });
     html += '<h2>More movies</h2>';
     html += '<div class="more-movies">'+more_movies_html+'</div>'
-    $('#data').html(html);
+    $('#content').html(html);
   });
 });
 
