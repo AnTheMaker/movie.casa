@@ -54,6 +54,7 @@ footer .links{
 }
 .poster{
   border-radius: 8px;
+  box-shadow: 0 0 10px rgba(200, 200, 200, 0.1)
 }
 .top-movie .col{
   padding: 10px;
