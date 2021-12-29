@@ -8,6 +8,6 @@ copy_dir(__DIR__.'/static', __DIR__.'/dist');
 
 // do stuff
 
-$time_elapsed = microtime(true)-$start; // execution time in seconds
+$time_elapsed = round((microtime(true) - $start_time), 6); // execution time in seconds
 echo 'OK - Site built successfully in '.$time_elapsed.'s'.PHP_EOL;
 exit;
