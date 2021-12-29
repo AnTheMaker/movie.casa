@@ -56,10 +56,22 @@ footer .links{
 }
 .more-movies .movie-element .poster{
   width: 100px;
+  height: 150px;
   display: block;
   margin: 0 auto;
 }
 
+.star{
+  display: inline-block;
+  margin: 0 3px 0 0;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -2px;
+}
+.star path{
+  fill: yellow; /* fallback */
+  fill: var(--highlight);
+}
 .loader{
   display: inline-block;
   margin: 0 5px;
