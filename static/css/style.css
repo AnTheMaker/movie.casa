@@ -11,6 +11,7 @@ footer .credits img{
 }
 footer .links{
   float: right;
+  margin: 10px 0;
 }
 .poster{
   border-radius: 8px;
@@ -55,7 +56,6 @@ footer .links{
     width: 100%;
     display: block;
     text-align: center;
-    margin-bottom: 10px;
   }
   footer .credits img{
     margin: 0 5px;
