@@ -37,6 +37,9 @@
 .special svg path{
   fill: var(--special);
 }
+#content{
+  min-height: 360px;
+}
 footer{
   font-size: small;
 }
