@@ -1,10 +1,11 @@
 // our js will go here
 
 $(function(){
-  var data = JSON.parse(json_data);
+  var data = JSON.parse(popular_json);
   if(data.time > 0){
     var html = '';
-    var more_movies_html = '';
+    var popular_movies_html = '';
+    var upcoming_movies_html = '';
     var i = 0;
     $.each(data.movies, function(key, movie){
       i++;
@@ -26,14 +27,28 @@ $(function(){
         html += '</div>';
       }else{
         var poster = 'https://images.weserv.nl/?url='+encodeURIComponent('https://image.tmdb.org/t/p/w154/'+movie.images.poster);
-        more_movies_html += '<div class="movie-element">';
-          more_movies_html += '<img class="poster" src="'+poster+'" alt="Poster of '+title+'" loading="lazy">';
-          more_movies_html += '<p>'+title+'</p>';
-        more_movies_html += '</div>';
+        popular_movies_html += '<div class="movie-element">';
+          popular_movies_html += '<img class="poster" src="'+poster+'" alt="Poster of '+title+'" loading="lazy">';
+          popular_movies_html += '<p>'+title+'</p>';
+        popular_movies_html += '</div>';
       }
     });
-    html += '<h2 class="special">More movies</h2>';
-    html += '<div class="more-movies">'+more_movies_html+'</div>'
+    html += '<h2 class="special">Popular movies</h2>';
+    html += '<div class="more-movies">'+popular_movies_html+'</div>';
+
+    var upcoming = JSON.parse(upcoming_json);
+    $.each(upcoming.movies, function(key, movie){
+      var title = htmlencode(movie.title);
+      var desc = htmlencode(movie.description);
+      var poster = 'https://images.weserv.nl/?url='+encodeURIComponent('https://image.tmdb.org/t/p/w154/'+movie.images.poster);
+      upcoming_movies_html += '<div class="movie-element">';
+        upcoming_movies_html += '<img class="poster" src="'+poster+'" alt="Poster of '+title+'" loading="lazy">';
+        upcoming_movies_html += '<p>'+title+'</p>';
+      upcoming_movies_html += '</div>';
+    });
+    html += '<h2 class="special">Upcoming movies</h2>';
+    html += '<div class="more-movies">'+upcoming_movies_html+'</div>';
+
     $('#content').html(html);
   }
 });

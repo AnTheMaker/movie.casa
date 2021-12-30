@@ -8,36 +8,64 @@ copy_dir(__DIR__.'/static', $output_dir);
 
 // do stuff
 
-$movie_data = getPopularMovies();
-$save_data = [
+$movie_ids = [];
+$popular_data = getPopularMovies();
+$popular_movies = [
   'time' => time(),
   'source' => 'https://developers.themoviedb.org/',
   'movies' => []
 ];
-foreach($movie_data['results'] as $movie){
-  $save_data['movies'][] = [
-    'id' => $movie['id'],
-    'title' => $movie['title'],
-    'description' => $movie['overview'],
-    'release_date' => $movie['release_date'],
-    'popularity' => $movie['popularity'],
-    'votes' => [
-      'avg' => $movie['vote_average'],
-      'count' => $movie['vote_count']
-    ],
-    'images' => [
-      'backdrop' => $movie['backdrop_path'],
-      'poster' => $movie['poster_path']
-    ],
-
-  ];
+foreach($popular_data['results'] as $movie){
+  if(!in_array($movie['id'], $movie_ids)){ // prevent duplicates
+    $movie_ids[] = $movie['id'];
+    $popular_movies['movies'][] = [
+      'id' => $movie['id'],
+      'title' => $movie['title'],
+      'description' => $movie['overview'],
+      'release_date' => $movie['release_date'],
+      'popularity' => $movie['popularity'],
+      'votes' => [
+        'avg' => $movie['vote_average'],
+        'count' => $movie['vote_count']
+      ],
+      'images' => [
+        'backdrop' => $movie['backdrop_path'],
+        'poster' => $movie['poster_path']
+      ]
+    ];
+  }
 }
-saveFile($output_dir.'/data.json', json_encode($save_data));
+$upcoming_data = getUpcomingMovies();
+$upcoming_movies = [
+  'time' => time(),
+  'source' => 'https://developers.themoviedb.org/',
+  'movies' => []
+];
+foreach($upcoming_data['results'] as $movie){
+  if(!in_array($movie['id'], $movie_ids)){ // prevent duplicates
+    $movie_ids[] = $movie['id'];
+    $upcoming_movies['movies'][] = [
+      'id' => $movie['id'],
+      'title' => $movie['title'],
+      'description' => $movie['overview'],
+      'release_date' => $movie['release_date'],
+      'popularity' => $movie['popularity'],
+      'votes' => [
+        'avg' => $movie['vote_average'],
+        'count' => $movie['vote_count']
+      ],
+      'images' => [
+        'backdrop' => $movie['backdrop_path'],
+        'poster' => $movie['poster_path']
+      ]
+    ];
+  }
+}
 
 $html = file_get_contents($output_dir.'/index.html');
-$data = json_encode($save_data);
-$data = addslashes($data); // escape quotes
-$html = preg_replace('/{{\s*data\s*}}/', $data, $html);
+$data = addslashes(json_encode($popular_movies));
+$html = preg_replace('/{{\s*popular_data\s*}}/', addslashes(json_encode($popular_movies)), $html);
+$html = preg_replace('/{{\s*upcoming_data\s*}}/', addslashes(json_encode($upcoming_movies)), $html);
 $html = preg_replace('/{{\s*base\s*}}/', $base, $html); // set base URL
 saveFile($output_dir.'/index.html', $html);
 

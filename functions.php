@@ -52,3 +52,8 @@ function getPopularMovies($page=1){
   $data = file_get_contents('https://api.themoviedb.org/3/movie/popular?api_key='.urlencode($tmdb_key).'&page='.urlencode($page));
   return json_decode($data, true);
 }
+function getUpcomingMovies($page=1){
+  global $tmdb_key;
+  $data = file_get_contents('https://api.themoviedb.org/3/movie/upcoming?api_key='.urlencode($tmdb_key).'&page='.urlencode($page));
+  return json_decode($data, true);
+}
