@@ -28,8 +28,8 @@ $(function(){
       }else{
         var poster = 'https://images.weserv.nl/?url='+encodeURIComponent('https://image.tmdb.org/t/p/w154/'+movie.images.poster);
         popular_movies_html += '<div class="movie-element">';
-          popular_movies_html += '<img class="poster" src="'+poster+'" alt="Poster of '+title+'" loading="lazy">';
-          popular_movies_html += '<p>'+title+'</p>';
+          popular_movies_html += '<a href="https://www.themoviedb.org/movie/'+movie.id+'" target="_blank"><img class="poster" src="'+poster+'" alt="Poster of '+title+'" loading="lazy"></a>';
+          popular_movies_html += '<a href="https://www.themoviedb.org/movie/'+movie.id+'" target="_blank"><p>'+title+'</p></a>';
         popular_movies_html += '</div>';
       }
     });
@@ -42,8 +42,8 @@ $(function(){
       var desc = htmlencode(movie.description);
       var poster = 'https://images.weserv.nl/?url='+encodeURIComponent('https://image.tmdb.org/t/p/w154/'+movie.images.poster);
       upcoming_movies_html += '<div class="movie-element">';
-        upcoming_movies_html += '<img class="poster" src="'+poster+'" alt="Poster of '+title+'" loading="lazy">';
-        upcoming_movies_html += '<p>'+title+'</p>';
+        upcoming_movies_html += '<a href="https://www.themoviedb.org/movie/'+movie.id+'" target="_blank"><img class="poster" src="'+poster+'" alt="Poster of '+title+'" loading="lazy"></a>';
+        upcoming_movies_html += '<a href="https://www.themoviedb.org/movie/'+movie.id+'" target="_blank"><p>'+title+'</p></a>';
       upcoming_movies_html += '</div>';
     });
     html += '<h2 class="special">Upcoming movies</h2>';
