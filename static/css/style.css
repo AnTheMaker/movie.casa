@@ -82,6 +82,9 @@ footer .links{
   display: block;
   margin: 0 auto;
 }
+.more-movies a{
+  color: color: var(--text-main);
+}
 
 .star{
   display: inline-block;
