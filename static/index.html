@@ -5,20 +5,21 @@
   <title>Movie Casa</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/water-dark.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{{ base }}css/water-dark.css">
+  <link rel="stylesheet" href="{{ base }}css/style.css">
   <link rel="preconnect" href="https://images.weserv.nl">
 
   <meta name="description" content="Discover the top trending movies to watch right now!">
+  <meta property="og:url" content="{{ base }}">
   <meta property="og:title" content="Movie Casa">
   <meta property="og:description" content="Discover the top trending movies to watch right now!">
-  <meta property="og:image" content="img/logo_square.png">
+  <meta property="og:image" content="{{ base }}img/logo_square.png">
 
   <meta property="twitter:creator" content="@anthemaker">
   <meta property="twitter:card" content="summary">
   <meta property="twitter:title" content="Movie Casa">
-  <meta property="twitter:description" content="iscover the top trending movies to watch right now!">
-  <meta property="twitter:image" content="img/logo_square.png">
+  <meta property="twitter:description" content="Discover the top trending movies to watch right now!">
+  <meta property="twitter:image" content="{{ base }}img/logo_square.png">
 
 </head>
 <body>
@@ -56,7 +57,7 @@
   <script>
   var json_data = '{{ data }}';
   </script>
-  <script src="js/jquery.js"></script>
-  <script src="js/script.js"></script>
+  <script src="{{ base }}js/jquery.js"></script>
+  <script src="{{ base }}js/script.js"></script>
 </body>
 </html>

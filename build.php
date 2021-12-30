@@ -38,6 +38,7 @@ $html = file_get_contents($output_dir.'/index.html');
 $data = json_encode($save_data);
 $data = addslashes($data); // escape quotes
 $html = preg_replace('/{{\s*data\s*}}/', $data, $html);
+$html = preg_replace('/{{\s*base\s*}}/', $base, $html); // set base URL
 saveFile($output_dir.'/index.html', $html);
 
 $time_elapsed = round((microtime(true) - $start_time), 6); // execution time in seconds
