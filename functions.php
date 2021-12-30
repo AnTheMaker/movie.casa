@@ -1,7 +1,12 @@
 <?php
 
 // variabbles
-$tmdb_key = getenv('tmdb_key');
+$tmdb_key = getenv('tmdb_key'); // the tmdb api key, stored as a Netlify secret
+
+$base = getenv('url'); // set by netlify
+if(!empty($base)){
+  $base .= '/';
+}
 
 $output_dir = __DIR__.'/dist'; // also change in /netlify.toml
 
