@@ -66,6 +66,7 @@ $html = file_get_contents($output_dir.'/index.html');
 $data = addslashes(json_encode($popular_movies));
 $html = preg_replace('/{{\s*popular_data\s*}}/', addslashes(json_encode($popular_movies)), $html);
 $html = preg_replace('/{{\s*upcoming_data\s*}}/', addslashes(json_encode($upcoming_movies)), $html);
+$html = preg_replace('/{{\s*date\s*}}/', date('Y-m-d'), $html); // insert current date
 $html = preg_replace('/{{\s*base\s*}}/', $base, $html); // set base URL
 saveFile($output_dir.'/index.html', $html);
 
