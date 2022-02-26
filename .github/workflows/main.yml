@@ -4,6 +4,7 @@ on:
   schedule:
     # Runs once a day at midnight
     - cron: '0 0 * * *'
+  workflow_dispatch:
 jobs:
   build:
     name: Trigger Site Rebuild
