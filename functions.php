@@ -12,7 +12,7 @@ $output_dir = __DIR__.'/dist'; // also change in /netlify.toml
 
 
 // function to recursively copy an entire directory (with all files and sub-directories) from on place to another
-function copy_dir($src, $dst){
+function copy_dir(string $src, string $dst){
   $dir = opendir($src);
   if(!is_dir($dst)){ // destination folder does not exists, let's create it
     mkdir($dst);
@@ -32,7 +32,7 @@ function copy_dir($src, $dst){
 }
 
 // really, really basic templating engine. input some html and some variables and it will replace them and
-function generateHTML($html, $vars=[]){
+function generateHTML(string $html, array $vars=[]){
   foreach($vars as $var->$value){
     $var = strtolower($var);
     $var = preg_quote($var, '/');
@@ -43,16 +43,16 @@ function generateHTML($html, $vars=[]){
 }
 
 // expects a destination path and some content and it will create a file
-function saveFile($path, $content){
+function saveFile(string $path, string $content){
   return file_put_contents($path, $content);
 }
 
-function getPopularMovies($page=1){
+function getPopularMovies(int $page=1){
   global $tmdb_key;
   $data = file_get_contents('https://api.themoviedb.org/3/movie/popular?api_key='.urlencode($tmdb_key).'&page='.urlencode($page));
   return json_decode($data, true);
 }
-function getUpcomingMovies($page=1){
+function getUpcomingMovies(int $page=1){
   global $tmdb_key;
   $data = file_get_contents('https://api.themoviedb.org/3/movie/upcoming?api_key='.urlencode($tmdb_key).'&page='.urlencode($page));
   return json_decode($data, true);
